@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<title>Document</title>
+</head>
+<body>
+	<div class="container">
+		<form action="#" class="login-form">
+			<h2>登录</h2>
+			<input type="text" name="username" placeholder="用户名">
+			<input type="text" name="password" placeholder="密码">
+			<button type="submit">登录</button>
+		</form>
+	</div>
+	<script type="text/javascript">
+		window.onload = function () {
+	background: url('./background2.jpeg') fixed no-repeat;
+
+        var imgs = ["./background.jpeg", "./background2.jpeg"];
+        var i = 0;
+        var head = document.getElementById("container");
+        head.style.background = "url(./background.jpeg)";
+        function time() {
+            i++;
+            i = i % 2;
+            head.style.background = "url(" + imgs[i] + ")";
+        }
+
+        setInterval(time, 6 * 1000);
+    }
+	</script>
+</body>
+</html>

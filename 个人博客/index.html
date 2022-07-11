@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>我的博客</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            width: 100%;
+            height: 40px;
+            background-color: #fff;
+        }
+
+        .top-bar_in {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .top-bar_in p {
+            padding-top: 10px;
+            font-size:12px;
+        }
+
+        .top-bar_in span {
+            float: right;
+            margin-top: -20px;
+        }
+
+        .top-bar_in span img {
+            width: 28px;
+            height: 28px;
+            padding-right:4px;
+        }
+
+        .top-bar_in span img:hover {
+            filter: drop-shadow(0 0 0 rgba(30, 115, 190, 0.8));
+            
+        }
+
+        .header {
+            width: 100%;
+            height: 95px;
+            background-color: #FAFAFA;
+        }
+
+        .header_in {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header_in h1 {
+            padding-top: 20px;
+            font-size: 3rem;
+        }
+
+        .header_in .drop-content{
+            width: 100px;
+            height: 120px;
+           position:absolute;
+           left:200px;
+           box-shadow: 1px solid #ccc;
+            background-color: #fff;
+            display: none;
+            color: #000;
+            z-index: 2;
+        }
+        .header_in .drop-content-second{
+            width: 100px;
+            height: 80px;
+           position:absolute;
+           left:320px;
+           box-shadow: 1px solid #ccc;
+            background-color: #fff;
+            display: none;
+            color: #000;
+            z-index: 2;
+        }
+      
+        
+
+        .header_in li:hover .drop-content {
+            
+            display: block;
+            z-index: 100;
+            transition: all .3s;
+            
+        }
+        .header_in li:hover .drop-content-second{
+            display: block;
+            z-index:100;
+            transition :all .3s;
+
+        }
+
+        .header_in .drop-content span {
+            float: left;
+            padding:10px 10px;
+        }
+        .header_in .drop-content-second span {
+            float: left;
+            padding:10px 15px;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 708px;
+            background-image: url(./img/boat.webp);
+            background-attachment: fixed;
+        }
+
+        .carousel .btn {
+            width: 80px;
+            height: 35px;
+            position: absolute;
+            top: 500px;
+            left: 360px;
+            color: #fff;
+            outline: none;
+            border: none;
+            background-color: #4299E1;
+        }
+
+        .carousel .btn::after,
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 35px;
+            border-radius: 1px;
+            background-color: #000;
+            z-index: -2;
+
+        }
+
+        .carousel .btn:hover {
+            z-index: 1;
+            background-color: transparent;
+        }
+
+        .btn::before {
+            transition: .3s;
+            background-color: #4299E1;
+            z-index: -1;
+        }
+
+        .btn:hover::after,
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        #slogan {
+            font-size: 3rem;
+            color: #fff;
+            position: absolute;
+            top: 550px;
+            left: 360px;
+        }
+
+        .hot_article {
+            width: 300px;
+            height: 540px;
+            background-color: rgba(255, 255, 255, 0.1);
+            opacity: .8;
+            position: absolute;
+            top: 200px;
+            color: #fff;
+            left: 1100px;
+            z-index: 1;
+
+
+        }
+
+        .hot_article div {
+
+            z-index: 100;
+        }
+
+        .hot_article h1 {
+
+            opacity: 1;
+        }
+
+        .hot_article li {
+            margin-bottom: 30px;
+        }
+        .hot_article ul{
+            position: absolute;
+            top: 10%;
+            left: 10%;
+        }
+        .hot_article .hot_article_title{
+            padding-left:20px;
+            float: right;
+        }
+        .hot_article .hot_article_title span{
+            font-size:14px;
+            color:#fff;
+        }
+        .hot_article .hot_article_title p{
+            font-size: 12px;
+            color:#B3B3B3;
+            padding-top:20px;
+        }
+        ul {
+            float: left;
+            list-style: none;
+            position: absolute;
+            top: 10%;
+            left: 30%;
+
+        }
+
+        ul :first-child {
+            color: #4299E1;
+        }
+
+        .list li {
+            padding-right: 70px;
+            float: left;
+            padding-bottom: 20px;
+
+        }
+
+        .list li:hover {
+            color: #4299E1;
+        }
+
+        .list a {
+            color: #000;
+        }
+
+        .list a:hover {
+            color: #4299E1;
+        }
+
+        .search {
+            float: right;
+            margin-top: -30px;
+        }
+
+        .search input {
+            width: 220px;
+            height: 30px;
+        }
+
+        .search button {
+            width: 80px;
+            height: 35px;
+
+        }
+
+        .content {
+            width: 100%;
+            height: 1500px;
+            background-color: #F7F7F7;
+        }
+
+        .perfer {
+            width: 1200px;
+            height: 400px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 200px 0;
+
+
+        }
+
+        .perfer h2 {
+            margin-bottom: 20px;
+        }
+
+        .perfer p {
+            color: #C9C1D2;
+            font-size: 13px;
+        }
+
+        .perfer #slide_bar {
+            position: absolute;
+            width: 1130px;
+            top: 1200px;
+            left: 400px;
+            display: flex;
+            flex-flow: row;
+            overflow: hidden;
+        }
+        .perfer #slide_bar li {
+
+            float: left;
+            padding-right: 20px;
+        }
+        .slide_bar_content{
+            width: 267px;
+            height:300px;
+        }
+        .slide_bar_content div{
+            width:267px;
+            height:150px;
+            background-color: #fff;;
+        }
+        .footer {
+            width: 100%;
+            height: 800px;
+            background-color: #000;
+        }
+
+        .clearfix::after {
+            content: "0";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+        }
+
+        #footersense {
+            background-image: url(./img/footersense.webp);
+            width: 100%;
+            height: 215px;
+            position: relative;
+        }
+
+        #footersense button {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 50px;
+            background-color: #4299E1;
+
+        }
+        .arrow-left{
+            width:40px;
+            height:40px;
+            margin-top:200px;
+            position: absolute;
+            opacity: 0.3;
+            left:300px;
+            background-image: url(./img/left_ar.png);
+            background-size: 40px;
+            float: left;
+        }
+        
+        .arrow-right{
+            width:40px;
+            height:40px;
+            margin-top:200px;
+            position:absolute;
+            left: 1600px;
+            opacity: 0.3;
+            background-image: url(./img/right_ar.png);
+            background-size: 40px;
+            float: right;
+        }
+        #arrow-container-left:hover .arrow-left,
+        #arrow-container-right:hover .arrow-right{
+           opacity: 1;
+        }
+        .article{
+            width: 1200px;
+            height:1300px;
+            margin: 0 auto;
+            background-color: #4299E1;
+                  }
+        .article_card{
+            width:835px;
+            height:1000px;
+            display: flex;
+            flex-flow: row wrap;
+            background-color: lightcyan;
+        }
+        .article_card_item{
+            width:387px;
+            height:370px;
+            margin-right: 20px;
+            background-color: #fff;
+        }
+        .article_card_item img{
+            width:387px;
+            height:230px;
+        }
+        .post_title{
+          padding:20px 20px;
+        }
+        .post_excerpt{
+            padding:10px 20px;
+        }
+        .read_more{
+            padding:0 20px;
+        }
+        .primary{
+            background-color: #4299E1;
+        }
+        .success{
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="top-bar_in">
+
+                <p>关注我的微博@幻海豪情</p>
+                <span><img src="./img/rss.png" /></span>
+                <span><img src="./img/QQ.png" /></span>
+                <span><img src="./img/mail.png" /></span>
+            </div>
+        </div>
+        <div class="header">
+            <div class="header_in">
+                <h1>Blog</h1>
+                <ul class="list">
+                    <li>主页</li>
+                    <li>关于我
+
+                    </li>
+                    <li>互联网
+                        <div class="drop-content ">
+                            <span><a>最新科技</a></span>
+                            <span><a>人物公司</a></span>
+                            <span><a>科技控</a></span>
+                        </div>
+                    </li>
+                    <li>生活娱乐
+                        <div class="drop-content-second ">
+                            <span><a>旅游攻略</a></span>
+                            <span><a>美食林 </a></span>
+
+                        </div>
+                    </li>
+                    <li>联系我们</li>
+                </ul>
+                <div class="search">
+                    <input type="text" name="" id="">
+                    <button>搜索</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="carousel">
+            <button class="btn">互联网</button>
+            <p id="slogan">
+                小众只是切入点，<br />而远方也不是我的重点
+            </p>
+            <div class="hot_article">
+                <div>
+                    <h1>热门文章</h1>
+                    <ul>
+                        <li>
+                            <img src="./img/3Dtablebox.webp" />
+                            <div class="hot_article_title">
+                                <span>寻味广州美食旅游线路</span>
+                                <br/>
+                                <p>发布时间:2019年3月18日</p>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <img src="./img/camera.webp" />
+                            <div class="hot_article_title">
+                                <span>寻味广州美食旅游线路</span>
+                                <br/>
+                                <p>发布时间:2019年3月18日</p>
+                            </div>
+                        </li>
+                        <li><img src="./img/3Dtablebox.webp" /> 
+                            <div class="hot_article_title">
+                                <span>寻味广州美食旅游线路</span>
+                                <br/>
+                                <p>发布时间:2019年3月18日</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/3Dtablebox.webp" /> 
+                            <div class="hot_article_title">
+                                <span>寻味广州美食旅游线路</span>
+                                <br/>
+                                <p>发布时间:2019年3月18日</p>
+                            </div>
+                        </li>
+                        <li><img src="./img/3Dtablebox.webp" />
+                            <div class="hot_article_title">
+                                <span>寻味广州美食旅游线路</span>
+                                <br/>
+                                <p>发布时间:2019年3月18日</p>
+                            </div>
+                            
+                            </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="content">
+            <div class="perfer">
+                <div class="perfer_title">
+                    <h2>推荐精品</h2>
+                    <p>北京，大家最熟悉的城市，但在北京有一个地方或许你没有去过，在夏天炎热的市区</p>
+                    <div id="arrow-container-left">
+                        <div class="arrow-left"></div></div>
+                    
+                    <ul id="slide_bar">
+                        <li>
+                            <div class="slide_bar_content">
+                                <img src="./img/skating.webp" alt="">
+                                <div>
+                                    <span>特斯拉CTO离职 公司股价受到..</span>
+                                    <p>对特斯拉而言,JBStraube可谓灵魂人物，他从一开始就在特斯拉工作并把马斯克带进了公司。</p>
+                                </div>
+                                
+                            </div>
+                        
+                        </li>
+                        <li>
+                            <div class="slide_bar_content">
+                                <img src="./img/castle.webp" alt="">
+                                <div>
+                                    <span>特斯拉CTO离职 公司股价受到..</span>
+                                    <p>对特斯拉而言,JBStraube可谓灵魂人物，他从一开始就在特斯拉工作并把马斯克带进了公司。</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slide_bar_content">
+                                <img src="./img/PC-time.webp" alt="">
+                                <div>
+                                    <span>特斯拉CTO离职 公司股价受到..</span>
+                                    <p>对特斯拉而言,JBStraube可谓灵魂人物，他从一开始就在特斯拉工作并把马斯克带进了公司。</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slide_bar_content">
+                                <img src="./img/surf.webp" alt="">
+                                <div>
+                                    <span>特斯拉CTO离职 公司股价受到..</span>
+                                    <p>对特斯拉而言,JBStraube可谓灵魂人物，他从一开始就在特斯拉工作并把马斯克带进了公司。</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slide_bar_content">
+                                <img src="./img/surf.webp" alt="">
+                                <div>
+                                    <span>特斯拉CTO离职 公司股价受到..</span>
+                                    <p>对特斯拉而言,JBStraube可谓灵魂人物，他从一开始就在特斯拉工作并把马斯克带进了公司。</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="slide_bar_content">
+                                <img src="./img/surf.webp" alt="">
+                                <div>
+                                    <span>特斯拉CTO离职 公司股价受到..</span>
+                                    <p>对特斯拉而言,JBStraube可谓灵魂人物，他从一开始就在特斯拉工作并把马斯克带进了公司。</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+
+                    </ul>
+                   <div class="arrow-container-right"> <div class="arrow-right"></div></div>
+                </div>
+            </div>
+            <div class="article">
+                <div class="article_card">
+                    <div class="article_card_item ">
+                        <img src="./img/PC-time.webp" alt="">
+                        <div class="post_title">
+                            <h5>寻找广州美食旅游线路</h5>
+                        </div>
+                        <div class="post_excerpt">
+                            <p>面试官:面试前端工程师的？</p>
+                        </div>
+                        <div class="read_more">
+                            <a href="#">详情...</a>
+                        </div>
+                    </div>
+                    <div class="article_card_item ">
+                        <img src="./img/PC-time.webp" alt="">
+                        <div class="post_title">
+                            <h5>寻找广州美食旅游线路</h5>
+                        </div>
+                        <div class="post_excerpt">
+                            <p>面试官:面试前端工程师的？</p>
+                        </div>
+                        <div class="read_more">
+                            <a href="#">详情...</a>
+                        </div>
+                    </div>
+                    <div class="article_card_item ">
+                        <img src="./img/PC-time.webp" alt="">
+                        <div class="post_title">
+                            <h5>寻找广州美食旅游线路</h5>
+                        </div>
+                        <div class="post_excerpt">
+                            <p>面试官:面试前端工程师的？</p>
+                        </div>
+                        <div class="read_more">
+                            <a href="#">详情...</a>
+                        </div>
+                    </div>
+                    <div class="article_card_item ">
+                        <img src="./img/PC-time.webp" alt="">
+                        <div class="post_title">
+                            <h5>寻找广州美食旅游线路</h5>
+                        </div>
+                        <div class="post_excerpt">
+                            <p>面试官:面试前端工程师的？</p>
+                        </div>
+                        <div class="read_more">
+                            <a href="#">详情...</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="article_list">
+                    <div class="followme">
+
+                    </div>
+                    <div class="new_article"></div>
+                    <div class="search_article">
+
+                    </div>
+                    <div class="recommd">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div id="footersense">
+                <button>关注我的微博@幻海豪情</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var LIWIDTH=267;
+        var LI=4;
+        var i=0;
+        var arrowLeft=document.getElementById('arrow-container-left');
+        console.log(arrowLeft);
+        var slide_bar=document.getElementById('slide_bar');
+        console.log(slide_bar)
+        arrowLeft.onclick=function(){
+        
+            for(i=0;i<6;i++){
+                slide_bar.style.marginLeft=-1*LIWIDTH+'px'; 
+            }
+         
+        }
+    </script>
+</body>
+
+</html>

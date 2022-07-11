@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warpper{
+            width: 60px;
+            margin: 10px auto;
+            /* 设置容器宽度 */
+            display: grid;
+            /* 声明列的宽度 */
+            grid-template-columns:1fr 2fr 3fr;
+            grid-gap: 20px;
+            /*  */
+            grid-template-rows: 1fr 1fr 1fr;
+
+
+        }
+        .item{
+            text-align: center;
+            font-size: 200%;
+            color: #fff;
+        }
+        .one{
+            background-color:#b8e8e0 ;
+        }  
+        .two  {
+            background-color:#8cc7b5 ;
+        }
+        .three{
+            background-color:#efe3bf ;
+        }
+        .four {
+            background-color:#bee7e9 ;
+        }
+        .five {
+            background-color:#e6ceac ;
+        }
+        .six  {
+            background-color:#ecad9e;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="warpper">
+        <div class="one   item">One  </div>
+        <div class="two   item">Two  </div>
+        <div class="three item">Three</div>
+        <div class="four  item">Four </div>
+        <div class="five  item">Five </div>
+        <div class="six   item">Six  </div>
+    </div>
+    
+</body>
+</html>
